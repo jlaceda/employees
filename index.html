@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Employee Data Management</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Employee Data Management</h1>
+        <h2>A Comprehensive Directory of Billable Hours</h2>
+      </div>
+      <div class="card mb-3">
+        <div class="card-header">
+          Current Employees
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Months Worked</th>
+                <th scope="col">Monthly Rate ($)</th>
+                <th scope="col">Total Billed ($)</th>
+              </tr>
+            </thead>
+            <tbody id="employeeTable">
+              <tr>
+                <td>Jane Doe</td>
+                <td>CEO</td>
+                <td>01/01/1970</td>
+                <td>10</td>
+                <td>200</td>
+                <td>2000</td>
+              </tr>
+              <tr>
+                <td>Jane Doe</td>
+                <td>CEO</td>
+                <td>01/01/1970</td>
+                <td>10</td>
+                <td>200</td>
+                <td>2000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          Add Employee
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="name-input">Employee Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name-input"
+                placeholder="Enter name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="role-input">Role</label>
+              <input
+                type="text"
+                class="form-control"
+                id="role-input"
+                placeholder="Enter role"
+              />
+            </div>
+            <div class="form-group">
+              <label for="startDate-input">Start Date (MM/DD/YYYY)</label>
+              <input
+                type="date"
+                class="form-control"
+                id="startDate-input"
+                placeholder="01/01/1970"
+              />
+            </div>
+            <div class="form-group">
+              <label for="rate-input">Monthly Rate</label>
+              <input
+                type="number"
+                class="form-control"
+                id="rate-input"
+                placeholder="0"
+              />
+            </div>
+            <button id="addEmployee" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDaZyftQXF4iE3MsVk6AFrrVWcQJgt8QQA",
+        authDomain: "employees-d6831.firebaseapp.com",
+        databaseURL: "https://employees-d6831.firebaseio.com",
+        projectId: "employees-d6831",
+        storageBucket: "employees-d6831.appspot.com",
+        messagingSenderId: "630338791567"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
