@@ -1,43 +1,30 @@
 var database = firebase.database();
-// on dom ready
-$(function()
-{
-	// load all current employees
-});
-
-// on child added
 
 function getMonthsWorked(employee)
 {
+	var start = moment(employee.startDate);
+	var now = moment(Date.now());
+	return now.diff(start, 'months');
 }
 
 function getTotalBilled(employee)
 {
+	return employee.rate * employee.monthsWorked;
 }
 
+// on child added
 database.ref().on("child_added", function(childSnapshot){
 	var employee = childSnapshot.val();
 	employee.monthsWorked = getMonthsWorked(employee);
 	employee.totalBilled = getTotalBilled(employee);
-	console.log(employee);
 	var tr = $("<tr>").html(`
 	<td>${employee.name}</td>
 	<td>${employee.role}</td>
 	<td>${employee.startDate}</td>
 	<td>${employee.monthsWorked}</td>
-	<td>${employee.rate}</td>
-	<td>${employee.totalBilled}</td>`);
+	<td>${employee.rate.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+	<td>${employee.totalBilled.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>`);
 	$("#employeeTable").append(tr);
-	/*
-	<tr>
-	<td>Jane Doe</td>
-	<td>CEO</td>
-	<td>01/01/1970</td>
-	<td>10</td>
-	<td>200</td>
-	<td>2000</td>
-	</tr>
-	*/
 });
 
 // onclick addEmployee
