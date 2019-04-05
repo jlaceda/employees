@@ -22,7 +22,7 @@ database.ref().on("child_added", function(childSnapshot){
 	<td>${employee.role}</td>
 	<td>${employee.startDate}</td>
 	<td>${employee.monthsWorked}</td>
-	<td>${employee.rate.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+	<td>${parseFloat(employee.rate).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
 	<td>${employee.totalBilled.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>`);
 	$("#employeeTable").append(tr);
 });
